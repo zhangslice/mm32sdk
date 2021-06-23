@@ -82,6 +82,12 @@
 #define  ETH_SUCCESS                                        ((u32)1)
 
 
+#ifdef _HAL_ETH_C_
+#define GLOBAL
+
+#else
+#define GLOBAL extern
+#endif
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -622,17 +628,8 @@ typedef struct  {
 #define MACFCR_CLEAR_MASK   ((u32)0x0000FF41)
 #define DMAOMR_CLEAR_MASK   ((u32)0xF8DE3F23)
 
-/// @}
 
-////////////////////////////////////////////////////////////////////////////////
-/// @defgroup DMA_Exported_Variables
-/// @{
-#ifdef _HAL_ETH_C_
 
-#define GLOBAL
-#else
-#define GLOBAL extern
-#endif
 GLOBAL __IO ETH_DMADESCTypeDef*  DMATxDescToSet;
 GLOBAL __IO ETH_DMADESCTypeDef*  DMARxDescToGet;
 
@@ -641,11 +638,6 @@ GLOBAL __IO ETH_DMA_Rx_Frame_infos* DMA_RX_FRAME_infos;
 GLOBAL __IO u32 Frame_Rx_index;
 
 #undef GLOBAL
-/// @}
-
-////////////////////////////////////////////////////////////////////////////////
-/// @defgroup DMA_Exported_Functions
-/// @{
 
 void ETH_DeInit(void);
 void ETH_StructInit(ETH_InitTypeDef* ptr);

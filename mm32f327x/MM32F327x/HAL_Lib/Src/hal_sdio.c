@@ -18,8 +18,9 @@
 // Define to prevent recursive inclusion
 #define _HAL_SDIO_C_
 #include "reg_sdio.h"
-#include "hal_rcc.h"
 #include "hal_sdio.h"
+#include "hal_rcc.h"
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -206,12 +207,10 @@ void SDIO_CmdStructInit(SDIO_CmdInitTypeDef* SDIO_CmdInitStruct)
 ////////////////////////////////////////////////////////////////////////////////
 void SDIO_Send_Cmd(u8 cmdindex, u8 waitrsp, u32 arg)
 {
-    vu8* p;
-    p = (u8*)&arg;
-    SDIO->CMD_BUF0 = *p++;
-    SDIO->CMD_BUF1 = *p++;
-    SDIO->CMD_BUF2 = *p++;
-    SDIO->CMD_BUF3 = *p++;
+    SDIO->CMD_BUF0 = (arg >> 0) & 0xFF;
+    SDIO->CMD_BUF1 = (arg >> 8) & 0xFF;
+    SDIO->CMD_BUF2 = (arg >> 16) & 0xFF;
+    SDIO->CMD_BUF3 = (arg >> 24) & 0xFF;
     SDIO->CMD_BUF4 = 0x40 | cmdindex;
     SDIO->CLR_MMC_INT |= 0;
     SDIO->MMC_IO = SDIO_MMC_IO_AUTOTR;

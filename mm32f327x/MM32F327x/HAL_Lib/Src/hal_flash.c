@@ -169,7 +169,7 @@ FLASH_Status FLASH_ProgramHalfWord(u32 address, u16 data)
 {
     FLASH->CR |= FLASH_CR_PG;
 
-    *(__IO u16*)address = data;
+    *(vu16*)address = data;
 
 
     return FLASH_WaitForLastOperation(ProgramTimeout);
@@ -210,7 +210,8 @@ FLASH_Status FLASH_ProgramOptionByteData(u32 address, u8 data)
     temp = (u16)(~data);
     temp = (temp << 8) & 0xFF00;
     temp = temp | (u16)data;
-    *(__IO u16*)address = temp;
+    address = address & (~0x1);
+    *(vu16*)address = temp;
     ret = FLASH_WaitForLastOperation(ProgramTimeout);
 
     return ret;
@@ -230,7 +231,7 @@ FLASH_Status FLASH_ProgramOptionHalfWord(u32 address, u16 data)
     FLASH_Status ret;
     FLASH_OPTB_Enable();
     FLASH->CR |= FLASH_CR_OPTPG;
-    *(__IO u16*)address = data;
+    *(vu16*)address = data;
     ret = FLASH_WaitForLastOperation(ProgramTimeout);
 
     return ret;

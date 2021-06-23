@@ -576,10 +576,10 @@ void I2S_Init(SPI_TypeDef* spi, I2S_InitTypeDef* I2S_InitStruct)
         RCC_GetClocksFreq(&RCC_Clocks);
 
         if((SPI2 == spi) || (SPI3 == spi))  {
-            sourceclock = RCC_Clocks.PCLK2_Frequency;
+            sourceclock = RCC_Clocks.PCLK1_Frequency;
         }
         else {
-            sourceclock = RCC_Clocks.PCLK1_Frequency;
+            sourceclock = RCC_Clocks.PCLK2_Frequency;
         }
         if(I2S_InitStruct->I2S_MCLKOutput == I2S_MCLKOutput_Enable) {
             result = (sourceclock) / (256 * (I2S_InitStruct->I2S_AudioFreq));

@@ -81,7 +81,7 @@ extern "C" {
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef enum {
-    SD_CMD_CRC_FAIL = 1,                                                                      ///< Command response received (but CRC check failed)
+    SD_CMD_CRC_FAIL = 1,                                                                    ///< Command response received (but CRC check failed)
     SD_DATA_CRC_FAIL,                                                                       ///< Data bock sent/received (CRC check Failed)
     SD_CMD_RSP_TIMEOUT,                                                                     ///< Command response timeout
     SD_DATA_TIMEOUT,                                                                        ///< Data time out

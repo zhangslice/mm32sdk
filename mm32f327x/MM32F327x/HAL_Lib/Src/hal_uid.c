@@ -42,11 +42,9 @@ u8 device_id_data[12] = {0};
 void GetChipUID(void)
 {
     u8 i;
-    u8* device_id;
-    device_id = (u8*)UID_BASE;
 
     for (i = 0; i < 12; i++) {
-        device_id_data[i] = *(device_id + i);
+        device_id_data[i] = *((vu8*)(UID_BASE + i));
     }
 }
 

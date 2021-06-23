@@ -64,8 +64,8 @@ typedef struct {
     __IO u32 AMR;                                                               ///< Acceptance Mask register,                      offset: 0x14
     __IO u32 BTR0;                                                              ///< Bus Timing register 0,                         offset: 0x18
     __IO u32 BTR1;                                                              ///< Bus Timing register 1,                         offset: 0x1C
-    __IO u32  RESERVED0;
-    __IO u32  RESERVED1;
+    __IO u32 RESERVED0;
+    __IO u32 RESERVED1;
     __IO u32 TXID0;                                                             ///< Send ID register 0,                            offset: 0x28
     __IO u32 TXID1;                                                             ///< Send ID register 1,                            offset: 0x2c
     __IO u32 TXDR0;                                                             ///< Send Data register 0,                          offset: 0x30

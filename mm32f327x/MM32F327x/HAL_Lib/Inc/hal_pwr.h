@@ -98,7 +98,6 @@ typedef enum {
     LP_WFI,
     LP_WFE
 } emPWR_Wait_Mode_Typedef;
-/// @brief PWR_Flag
 //typedef enum {
 //    PWR_FLAG_WU   = PWR_CSR_WUF,
 //    PWR_FLAG_SB   = PWR_CSR_SBF,
